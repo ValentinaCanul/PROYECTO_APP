@@ -1,0 +1,111 @@
+Inventario Web con Cassandra
+
+Descripción
+
+Este proyecto es una aplicación web de inventario que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre productos almacenados en una base de datos Cassandra.
+
+La interfaz está construida usando Express y EJS, y se puede exponer al mundo a través de ngrok para pruebas rápidas.
+
+Características
+
+Agregar productos al inventario (nombre, categoría, cantidad, precio).
+
+Listar todos los productos disponibles.
+
+Editar productos existentes.
+
+Eliminar productos del inventario.
+
+Compatible con Cassandra local.
+
+Puede compartirse temporalmente en Internet usando ngrok.
+
+Tecnologías usadas
+
+Cassandra: base de datos NoSQL orientada a columnas.
+
+Node.js: entorno de ejecución para JavaScript.
+
+Express: framework web para Node.js.
+
+EJS: motor de plantillas para generar HTML dinámico.
+
+Ngrok: para exponer el servidor local a Internet.
+
+Estructura del proyecto
+inventario_web/
+├─ index.js           # Archivo principal de la aplicación
+├─ package.json       # Dependencias y configuración de Node.js
+├─ views/
+│  ├─ index.ejs       
+│  ├─ create.ejs      
+│  ├─ edit.ejs        
+├─ README.md          
+
+Instalación y configuración
+
+Clonar el repositorio
+
+git clone https://github.com/tu_usuario/inventario_web.git
+cd inventario_web
+
+
+Instalar dependencias
+
+npm install
+
+
+Configurar Cassandra
+
+Asegúrate de tener Cassandra corriendo localmente.
+
+Crea el keyspace y la tabla de inventario:
+
+CREATE KEYSPACE IF NOT EXISTS inventario_app
+WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+USE inventario_app;
+
+CREATE TABLE IF NOT EXISTS productos (
+    id UUID PRIMARY KEY,
+    nombre text,
+    categoria text,
+    cantidad int,
+    precio decimal
+);
+
+
+Ejecutar la aplicación
+
+node index.js
+
+
+La app estará disponible en http://localhost:3000.
+
+Compartir la aplicación por Internet (opcional)
+
+Instalar ngrok:
+
+brew install ngrok
+
+
+Abrir túnel a tu puerto local:
+
+ngrok http 3000
+
+
+Ngrok te dará un link tipo https://abcd1234.ngrok.io que puedes compartir con otros.
+
+Uso
+
+Abrir la app en el navegador.
+
+Usar los enlaces de la interfaz para agregar, editar o eliminar productos.
+
+Todos los cambios se guardan directamente en Cassandra.
+
+Notas
+
+Esta app funciona con Cassandra local.
+
+Para acceso permanente en Internet, se recomienda usar Cassandra en la nube (DataStax Astra) y desplegar la app en Heroku.
