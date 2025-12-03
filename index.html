@@ -1,0 +1,30 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventario de Laptops</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Inventario de Laptops</h1>
+
+  <div id="form">
+    <input type="number" id="id" placeholder="ID">
+    <input type="text" id="brand" placeholder="Marca">
+    <input type="text" id="name" placeholder="Nombre">
+    <input type="number" id="price" placeholder="Precio">
+    <button onclick="agregarLaptop()">Agregar</button>
+  </div>
+
+  <h2>Laptops</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th><th>Marca</th><th>Nombre</th><th>Precio</th><th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-laptops"></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
